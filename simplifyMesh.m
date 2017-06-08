@@ -5,21 +5,19 @@ function  [newFaces,newVertices] = simplifyMesh(newFaces,newVertices,threshold)
 
     %Compute Q for all Vertices
     Q = zeros(4,4,length(newVertices));
-    for index = 1:length(newVertices)
+    parfor index = 1:length(newVertices)
         Q(:,:,index) = computeQ(index,newFaces,newVertices);
     end
 
     sortingList = zeros(size(pairSet,1),6);
 
     %compute error for each pair
-    for sIndex = 1:length(pairSet)
+    parfor sIndex = 1:length(pairSet)
         currentPairs = pairSet(sIndex,:);
 
         if ~isempty(currentPairs)        
             [error,vBar] = computeError(Q,newVertices,currentPairs(1),currentPairs(2));
-            sortingList(sIndex,1:2) = currentPairs;
-            sortingList(sIndex,3) = error;
-            sortingList(sIndex,4:6) = vBar;
+             sortingList(sIndex,:) = horzcat(currentPairs(1),currentPairs(2),error,vBar);
         end
 
     end

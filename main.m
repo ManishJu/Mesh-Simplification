@@ -19,10 +19,8 @@ figure;
 trisurf(newFaces',newVertices(1,:),newVertices(2,:),newVertices(3,:));axis equal;
 
 %% Extension of the project : Simplify mesh by removing traingles instead of edges
-
 for i = 1:nIter2
         [newFaces,newVertices] = simplifyMeshTri(newFaces,newVertices,threshold);
 end
-
 figure;
 trisurf(newFaces',newVertices(1,:),newVertices(2,:),newVertices(3,:)); axis equal;
