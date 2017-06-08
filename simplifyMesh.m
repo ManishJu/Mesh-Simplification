@@ -17,7 +17,7 @@ function  [newFaces,newVertices] = simplifyMesh(newFaces,newVertices,threshold)
 
         if ~isempty(currentPairs)        
             [error,vBar] = computeError(Q,newVertices,currentPairs(1),currentPairs(2));
-             sortingList(sIndex,:) = horzcat(currentPairs(1),currentPairs(2),error,vBar);
+             sortingList(sIndex,:) = horzcat(currentPairs,error,vBar);
         end
 
     end
