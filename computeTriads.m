@@ -3,7 +3,7 @@ function vertexTriads = computeTriads(vertices,faces,threshold,pairs)
     vertexTriads = faces';
     newFaces = [];
     
-    for index = 1:size(pairs,1)
+    parfor index = 1:size(pairs,1)
         v1 = pairs(index,1);
         v2 = pairs(index,2);
         for vertIndex = 1:size(vertices,2)

@@ -2,7 +2,7 @@ function vertexPairs = computePairs(vertices,faces,threshold)
 
     vertexPairs = [];
     vRing = compute_vertex_ring(faces);
-    for index = 1:length(vRing)
+    parfor index = 1:length(vRing)
         currNeighbours = vRing{index};
         for vertIndex = 1:size(vertices,2)
             dist = norm(vertices(:,index) - vertices(:,vertIndex));
